@@ -21,6 +21,64 @@ class MultiModelParams(object):
 
 
 class ModelParams(object):
+    """
+    Object to store the physical parameters of the system.
+
+    :param brightness_model: specificies the parameterization for the planet's surface brightness or temperature (choice of "spherical", "zhang", "hotspot_b", "hotspot_t", "two temperature", "two brightness", "direct_b", "direct_t").
+    :type brightness_model: str
+
+    :param thermal: specifies whether the brightness model is thermal FIXME
+    :type thermal: bool, optional
+
+    :param nearest: specifies which interpolation method to use for brightness model (default: spline).
+    :type nearest: str, optional
+
+    :param stellar_model: specifies which stellar model to use: ``blackbody" (the default), ``PHOENIX'', and ``path_to_model'' (a user-specified spectrum)
+    :type stellar_model: str
+
+    :param n_layers:
+    :type n_layers: int
+
+    :param t0: Time of inferior conjunction. 
+    :type t0: float, optional 
+
+    :param t_secondary: Time of secondary eclipse center.
+    :type t_secondary: float, optional 
+
+    :param per: Orbital period.
+    :type per: float
+
+    :param a_abs: Absolute value of the semi major axis [AU]
+    :type per: float
+
+    :param rp: Planet radius [in stellar radii].
+    :type rp: float
+
+    :param a: Semi-major axis [in stellar radii].
+    :type a: float
+
+    :param inc: Orbital inclination [in degrees].
+    :type inc: float
+
+    :param ecc: Orbital eccentricity.
+    :type ecc: float
+
+    :param w: Argument of periapse [in degrees]
+    :type w: float
+
+    :param p_u1:  **PLANETARY** limb darkening coefficients (linear term)
+    :type p_u1: float
+
+    :param p_u2:  **PLANETARY** limb darkening coefficients (quadratic term)
+    :type p_u2: float
+
+    :param eclipse: flag that specifies whether to include the drop in flux due to the eclipse
+    :type eclipse: bool, optional
+
+    :param filter: path to file storing the instrument response. Format is a plain text file that consists of two columns, the wavelength in metres and the corresponding instument response value (typically a number between 0 and 1) and must be in units of counts per photon. 
+    :type filter: str, optional
+    """
+
     def __init__(self,brightness_model='zhang',thermal=False, nearest=None, stellar_model = 'blackbody'):
 
         self.n_layers = 5            # The default resolution for the grid
